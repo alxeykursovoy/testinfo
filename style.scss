@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+$primary-color: #007bff;
+$light-gray: #f0f2f5;
+$navbar-bg: #f8f9fa;
+$text-color: #343a40;
+$border-color: #e9ecef;
+$white: #fff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$green: limegreen;
+$gold: gold;
+$red: red;
+
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $light-gray;
+}
+
+#content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+b {
+    color: $primary-color;
+}
+
+.text-center {
+  margin-top: 30px;
+}
+
+.navbar {
+  background-color: $navbar-bg;
+  box-shadow: 0 2px 4px $shadow-color;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid $border-color;
+
+
+    &-brand img {
+        max-height: 3rem;
+        max-width: 100px;
+    }
+}
+
+.nav-item1 {
+  a {
+    color: $primary-color !important;
+    text-decoration: none;
+  }
+}
+
+.nav-link {
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.user-icon {
+  font-size: 1.5rem;
+}
+
+.stage {
+  border: 1px solid $primary-color;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0 2px 4px $shadow-color;
+}
+
+
+.btn {
+    margin-left: 1rem;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+    background-color: darken($primary-color, 10%);
+    }
+
+    &-start{
+        border-radius: 30px;
+        font-size: 1.2rem;
+    }
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.level-container {
+  margin-bottom: 20px;
+}
+
+.level-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.level-item {
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $navbar-bg;
+      border-color: darken($primary-color, 10%);
+      box-shadow: 2px 2px 5px $shadow-color;
+    }
+
+    .circle {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+}
+
+.level-easy {
+    margin-top: 10px;
+     .circle {
+        background-color: $green;
+      }
+}
+
+
+.level-medium {
+    .circle {
+    background-color: $gold;
+    }
+}
+
+.level-hard {
+    .circle {
+    background-color: $red;
+    }
+}
+
+.placeholder-card {
+    background-color: lightblue;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 150px;
+    padding: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+  .btn {
+      width: 100%;
+      margin-bottom: 1rem;
+      margin-left: 0;
+  }
+
+  .level-item {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .circle {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+      }
+  }
+
+  .card-container {
+      grid-template-columns: 1fr;
+  }
+
+  .card-title {
+      font-size: 1.1rem;
+  }
+
+  .card-text {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+      font-size: 1rem;
+  }
+
+  .card-text {
+      font-size: 0.8rem;
+  }
+}
+
+.larger-list {
+    font-size: 1.2em;
+
+    i {
+        font-size: 1.2em;
+    }
+
+     li {
+        padding: 10px;
+        line-height: 1.5;
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    margin: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px $shadow-color;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+}
+
+.card-title {
+    font-weight: bold;
+    padding: 10px;
+    background-color: $navbar-bg;
+    border-bottom: 1px solid $border-color;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $primary-color;
+}
+
+.card-text {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.test-info {
+  text-align: center;
+  padding: 20px;
+}
+
+footer {
+  background-color: $navbar-bg;
+  border-top: 1px solid $border-color;
+  padding: 1rem;
+  text-align: center;
+}

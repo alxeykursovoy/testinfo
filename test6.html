@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ИнфоТест</title>
+<link rel="stylesheet" href="./Style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!-- Added Font Awesome -->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="./index.html">
+    <img src="./picture/logo.png" alt="ИнфоТест"> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="./index.html">Главная</a>
+      </li>
+      <li class="nav-item1">
+        <a class="nav-link" href="./test.html">Тесты</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./info.html">Полезная информация</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./onas.html">О нас</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./contact.html">Контакты</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div id="content-wrapper">
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Тестирование</h1>
+        <div id="quiz-container" class="quiz-container">
+            <div class="row">
+                <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-center mt-1">
+                    <img id="quiz-image" src="./picture/quiz.png" alt="Изображение к тесту" class="img-fluid rounded mx-auto d-block" style="display: none;">
+                </div>
+           </div>
+          <div id="quiz-container-inner"></div>
+          <button id="submit-btn" class="btn btn-primary mt-3" style="display: none;">Следующий вопрос</button>
+        </div>
+        <div id="result-container" class="mt-3 text-center" style="display: none;"></div>
+         <div id="recommendation-container" style="display: none;">
+            <h3 class="text-center mt-4">Улучшить знания по теме:</h3>
+            <div class="container d-flex justify-content-center">
+                <div class="col-md-4" style="margin-left: auto; margin-right: auto;">
+                  <div class="card-body">
+                    <h5 class="card-title">Архитектура ПО, протоколы и алгоритмы</h5>
+                    <p class="card-text">
+                      В этой статье мы рассмотрим более продвинутые темы, важные для разработки программного обеспечения и управления IT-инфраструктурой, включая принципы SOLID, контейнеризаци...
+                    </p>
+                    <a href="./info6.html" class="btn btn-primary">Читать</a>
+                    <p class="card-text">
+                    <small class="text-muted">Время чтения: 5 минут</small>
+                    </p>
+                  </div>
+              </div>
+                </div>
+            </div>
+         </div>
+        <div class="d-flex justify-content-center">
+          <button id="restart-btn" class="btn btn-secondary mt-3 mr-2" style="display: none;">Пройти еще раз</button>
+          <a href="./test.html" id="other-page-btn" class="btn btn-primary mt-3" style="display: none;">Выбрать другой тест</a>
+        </div>
+    </div>
+
+
+     <script>
+    const questions = [
+        {
+             question: "Что такое наследование в ООП?",
+             options: ["Метод сортировки данных", "Метод создания новых объектов на основе существующих", "Способ работы с функциями", "Способ управления памятью"],
+             correctAnswer: "Метод создания новых объектов на основе существующих"
+         },
+         {
+             question: "Что такое виртуальная машина (VM)?",
+             options: ["Физический компьютер", "Программная эмуляция компьютерной системы", "Видеокарта", "Внешний жесткий диск"],
+             correctAnswer: "Программная эмуляция компьютерной системы"
+         },
+         {
+              question: "Что такое TCP/IP?",
+              options: ["Язык программирования", "Набор протоколов для передачи данных в сети", "Операционная система", "Метод сжатия данных"],
+              correctAnswer: "Набор протоколов для передачи данных в сети"
+         },
+         {
+              question: "Что такое SQL-инъекция?",
+              options: ["Способ оптимизации запросов к базе данных", "Метод защиты от вирусов", "Уязвимость безопасности, позволяющая внедрять вредоносный SQL-код", "Способ шифрования данных"],
+              correctAnswer: "Уязвимость безопасности, позволяющая внедрять вредоносный SQL-код"
+         },
+          {
+             question: "Что такое Docker?",
+             options: ["Язык программирования", "Инструмент для контейнеризации приложений", "База данных", "Инструмент для создания графических интерфейсов"],
+             correctAnswer: "Инструмент для контейнеризации приложений"
+         },
+          {
+              question: "Что такое асимптотическая нотация (например, O(n), O(n^2))?",
+              options: ["Способ записи адресов памяти", "Способ записи алгоритмов", "Способ описания роста времени работы или потребления ресурсов алгоритмом", "Способ шифрования данных"],
+              correctAnswer: "Способ описания роста времени работы или потребления ресурсов алгоритмом"
+         },
+          {
+             question: "Что такое SOLID?",
+             options: ["Набор принципов объектно-ориентированного программирования", "Тип базы данных", "Язык программирования", "Набор протоколов"],
+             correctAnswer: "Набор принципов объектно-ориентированного программирования"
+         },
+         {
+             question: "Что такое CI/CD?",
+              options: ["Язык программирования", "Набор практик для автоматизации сборки, тестирования и развертывания программного обеспечения", "Тип базы данных", "Метод сжатия данных"],
+              correctAnswer: "Набор практик для автоматизации сборки, тестирования и развертывания программного обеспечения"
+         },
+          {
+              question: "Что такое дедлок (deadlock) в многопоточном программировании?",
+              options: ["Ошибка в коде", "Ситуация, когда два или более потоков блокируют друг друга", "Метод оптимизации кода", "Специальный вид данных"],
+              correctAnswer: "Ситуация, когда два или более потоков блокируют друг друга"
+         },
+         {
+             question: "Что такое API Gateway?",
+             options: ["Сервер для хранения файлов", "Место, где приложения встречаются и обмениваются информацией", "Протокол передачи данных", "Сервер для обработки почты"],
+               correctAnswer: "Место, где приложения встречаются и обмениваются информацией"
+         },
+         {
+              question: "Что такое Dependency Injection (DI)?",
+              options: ["Метод защиты от вирусов", "Паттерн проектирования, позволяющий уменьшить связанность кода", "Метод управления памятью", "Способ сжатия данных"],
+              correctAnswer: "Паттерн проектирования, позволяющий уменьшить связанность кода"
+         },
+         {
+              question: "Что такое нормализация базы данных?",
+              options: ["Процесс сжатия данных", "Процесс организации данных в базе данных для минимизации избыточности и обеспечения целостности", "Метод защиты базы данных", "Процесс шифрования данных"],
+               correctAnswer: "Процесс организации данных в базе данных для минимизации избыточности и обеспечения целостности"
+         },
+         {
+              question: "Что такое WebSocket?",
+              options: ["Протокол для загрузки файлов", "Протокол для обмена данными в реальном времени", "Протокол для отправки почты", "Протокол для шифрования данных"],
+              correctAnswer: "Протокол для обмена данными в реальном времени"
+         },
+         {
+              question: "Что такое кроссплатформенная разработка?",
+              options: ["Разработка только под одну операционную систему", "Разработка под несколько платформ сразу (например, Android и iOS)", "Разработка игр", "Разработка для веб-сайтов"],
+              correctAnswer: "Разработка под несколько платформ сразу (например, Android и iOS)"
+         },
+          {
+              question: "Что такое NoSQL базы данных?",
+               options: ["Реляционные базы данных", "Нереляционные базы данных, предназначенные для работы с неструктурированными данными", "Базы данных, работающие с текстом", "Базы данных, работающие с графикой"],
+               correctAnswer: "Нереляционные базы данных, предназначенные для работы с неструктурированными данными"
+         },
+        {
+             question: "Что такое RESTful API?",
+              options: ["API, использующий REST архитектуру", "API для работы с графикой", "API для управления файлами", "API для обработки текста"],
+              correctAnswer: "API, использующий REST архитектуру"
+         },
+        {
+            question: "Что такое кеширование данных?",
+             options: ["Метод сжатия данных", "Метод временного хранения данных для ускорения доступа", "Метод защиты данных", "Метод шифрования данных"],
+             correctAnswer: "Метод временного хранения данных для ускорения доступа"
+        },
+         {
+             question: "Что такое front-end разработка?",
+             options: ["Разработка серверной части", "Разработка пользовательского интерфейса", "Разработка баз данных", "Разработка API"],
+             correctAnswer: "Разработка пользовательского интерфейса"
+         },
+         {
+             question: "Что такое back-end разработка?",
+             options: ["Разработка пользовательского интерфейса", "Разработка серверной части", "Разработка баз данных", "Разработка мобильных приложений"],
+              correctAnswer: "Разработка серверной части"
+         },
+          {
+              question: "Что такое блокчейн?",
+             options: ["База данных для хранения данных в виде блоков", "Метод шифрования данных", "Вид вируса", "Протокол передачи данных"],
+             correctAnswer: "База данных для хранения данных в виде блоков"
+         }
+    ];
+
+    const quizContainer = document.getElementById('quiz-container');
+    const submitButton = document.getElementById('submit-btn');
+    const resultContainer = document.getElementById('result-container');
+    const restartButton = document.getElementById('restart-btn');
+    const otherPageButton = document.getElementById('other-page-btn');
+    const quizImage = document.getElementById('quiz-image');
+    const recommendationContainer = document.getElementById('recommendation-container');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let selectedAnswers = []; 
+
+    function loadQuestion() {
+        quizContainer.style.display = 'block';
+        quizImage.style.display = 'block';
+        const question = questions[currentQuestion];
+        let questionHTML = `<div class="question">
+                                <p>${currentQuestion + 1}. ${question.question}</p>`;
+        question.options.forEach((option, index) => {
+            questionHTML += `<div class="form-check">
+                                <input class="form-check-input" type="radio" name="q${currentQuestion}" value="${option}" id="option${index}">
+                                <label class="form-check-label" for="option${index}">${option}</label>
+                            </div>`;
+        });
+        questionHTML += `</div>`;
+        document.getElementById('quiz-container-inner').innerHTML = questionHTML;
+
+
+        if (currentQuestion === questions.length - 1) {
+            submitButton.textContent = "Завершить тест";
+        } else {
+            submitButton.textContent = "Следующий вопрос";
+        }
+    }
+
+     function checkAnswer() {
+        const selectedOption = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+        if (selectedOption) {
+            selectedAnswers.push(selectedOption.value)
+            if (selectedOption.value === questions[currentQuestion].correctAnswer) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        } else {
+            alert("Выберите ответ!");
+        }
+    }
+
+    function showResult() {
+        quizContainer.style.display = 'none';
+        quizImage.style.display = 'none';
+        submitButton.style.display = 'none';
+        resultContainer.style.display = 'block';
+        restartButton.style.display = 'block';
+        otherPageButton.style.display = 'block';
+        recommendationContainer.style.display = 'block';
+        const percentage = (score / questions.length) * 100;
+        let message = `<p>Вы ответили правильно на ${score} из ${questions.length} вопросов.</p>
+                        <p>Процент правильных ответов: ${percentage.toFixed(2)}%</p>`;
+        if (percentage === 100) {
+            message = `<h3 class="ritans">Тест успешно сдан!</h3>` + message;
+        } else {
+            message = `<h3 class="badans">Тест не сдан.</h3>` + message;
+        }
+        resultContainer.innerHTML = `<h2>Ваш результат:</h2>
+                                        ${message}`;
+         backupSite(percentage, score);
+    }
+
+    function restartQuiz() {
+        currentQuestion = 0;
+        score = 0;
+         selectedAnswers = [];
+        resultContainer.style.display = 'none';
+        restartButton.style.display = 'none';
+        otherPageButton.style.display = 'none';
+        recommendationContainer.style.display = 'none';
+        loadQuestion();
+        submitButton.style.display = 'block';
+    }
+
+    loadQuestion();
+    submitButton.style.display = 'block';
+    submitButton.addEventListener('click', checkAnswer);
+    restartButton.addEventListener('click', restartQuiz);
+    
+        function backupSite(percentage, score) {
+    const pageData = {
+       page_title: document.title,
+       navigation: {
+           logo: {
+            src: document.querySelector('nav .navbar-brand img').src,
+             alt: document.querySelector('nav .navbar-brand img').alt,
+             href: document.querySelector('nav .navbar-brand').getAttribute('href')
+        },
+         links: Array.from(document.querySelectorAll('nav .navbar-nav .nav-item a')).map(link => ({
+              text: link.textContent,
+              href: link.getAttribute('href')
+        }))
+        },
+        content: {
+            title: document.querySelector('#content-wrapper h1').textContent,
+              quiz: {
+                image: {
+                    src: document.querySelector('#quiz-image').src,
+                    alt: document.querySelector('#quiz-image').alt,
+                    style: document.querySelector('#quiz-image').style.cssText
+                },
+                quiz_inner_container:  document.querySelector('#quiz-container-inner').innerHTML,
+                  submit_button: {
+                    text: document.querySelector('#submit-btn').textContent,
+                    style:  document.querySelector('#submit-btn').style.cssText
+                }
+            },
+            result_container: {
+                  style:  document.querySelector('#result-container').style.cssText,
+                  result_text: document.querySelector('#result-container').innerHTML,
+                   score: score,
+                     percentage: percentage
+            },
+             recommendation_container: {
+                  style:  document.querySelector('#recommendation-container').style.cssText,
+                  title:  document.querySelector('#recommendation-container h3').textContent,
+                     cards: Array.from(document.querySelectorAll('#recommendation-container .card')).map(card =>({
+                       title: card.querySelector('.card-title').textContent,
+                       text: card.querySelector('.card-text:first-of-type').textContent,
+                         link: {
+                             href: card.querySelector('a').getAttribute('href'),
+                              text: card.querySelector('a').textContent
+                          },
+                          time: card.querySelector('.card-text:last-of-type').textContent
+                  }))
+              },
+             buttons:  Array.from(document.querySelectorAll('#content-wrapper .d-flex > button, #content-wrapper .d-flex > a')).map(button => ({
+                id: button.id,
+                 text: button.textContent,
+                   href: button.getAttribute('href') || '',
+                 style: button.style.cssText
+            }))
+        },
+         javascript_code_start: "здесь начинается javascript код",
+        javascript_code: {
+            questions: questions,
+             selectedAnswers: selectedAnswers,
+            script:  document.querySelector('script:last-of-type').textContent,
+            style: Array.from(document.querySelectorAll('style')).map(style => style.textContent).join('\n')
+        },
+    footer: {
+        text_left: document.querySelector('footer .col-md-6:first-child').textContent.trim(),
+        text_right: document.querySelector('footer .col-md-6:last-child').textContent.trim()
+    }
+    };
+
+
+    const jsonData = JSON.stringify(pageData, null, 2);
+   
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "site_backup.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+    </script>
+<style>
+        .quiz-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .badans {
+          color: red;
+        }
+        .ritans {
+          color: green;
+        }
+</style>
+</div>
+<footer class="bg-light py-3 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-left">
+        ИнфоТест 2024 &nbsp; &nbsp; &nbsp; Сайт работает круглосуточно
+      </div>
+      <div class="col-md-6 text-right">
+      tg vk e-mail
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+body {
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+}
+
+#content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+b {
+  color: #007bff;
+}
+
+.text-center {
+  margin-top: 30px;
+}
+
+.navbar {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.navbar-brand img {
+  max-height: 3rem;
+  max-width: 100px;
+}
+
+.nav-item1 a {
+  color: #007bff !important;
+  text-decoration: none;
+}
+
+.nav-link {
+  color: #343a40;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #007bff;
+}
+
+.user-icon {
+  font-size: 1.5rem;
+}
+
+.stage {
+  border: 1px solid #007bff;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  margin-left: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn:hover {
+  background-color: #0062cc;
+}
+.btn-start {
+  border-radius: 30px;
+  font-size: 1.2rem;
+}
+
+.row {
+  margin-top: 10px;
+}
+
+.level-container {
+  margin-bottom: 20px;
+}
+
+.level-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.level-item {
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+.level-item:hover {
+  background-color: #f8f9fa;
+  border-color: #0062cc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.level-item .circle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.level-easy {
+  margin-top: 10px;
+}
+.level-easy .circle {
+  background-color: limegreen;
+}
+
+.level-medium .circle {
+  background-color: gold;
+}
+
+.level-hard .circle {
+  background-color: red;
+}
+
+.placeholder-card {
+  background-color: lightblue;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 150px;
+  padding: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-left: 0;
+  }
+  .level-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .level-item .circle {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .card-text {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1rem;
+  }
+  .card-text {
+    font-size: 0.8rem;
+  }
+}
+.larger-list {
+  font-size: 1.2em;
+}
+.larger-list i {
+  font-size: 1.2em;
+}
+.larger-list li {
+  padding: 10px;
+  line-height: 1.5;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #007bff;
+}
+
+.card-text {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.test-info {
+  text-align: center;
+  padding: 20px;
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 1rem;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */
