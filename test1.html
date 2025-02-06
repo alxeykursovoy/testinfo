@@ -73,6 +73,34 @@
     </div>
 
      <script>
+       document.addEventListener('DOMContentLoaded', function() {
+  // Получаем кнопку по id
+  const otherPageBtn = document.getElementById('other-page-btn');
+
+  // Проверяем, существует ли кнопка (на всякий случай)
+  if (otherPageBtn) {
+    // Добавляем обработчик события click
+    otherPageBtn.addEventListener('click', function(event) {
+      // Предотвращаем переход по ссылке до срабатывания счётчика (важно, если счётчик не успевает отработать до перехода)
+      event.preventDefault();
+
+      // Отправляем цель в Яндекс.Метрику
+      if (typeof ym === 'function') {
+        ym(99817397, 'reachGoal', 'proyden'); // Изменено на 'proyden'
+      } else {
+        console.warn('Яндекс.Метрика не инициализирована. Убедитесь, что код счетчика подключен.');
+      }
+
+      // После отправки цели, перенаправляем пользователя на страницу
+      // Добавляем небольшую задержку, чтобы счётчик точно успел отработать
+      setTimeout(function() {
+        window.location.href = otherPageBtn.href;
+      }, 100); // Задержка в 100 миллисекунд.  Можете увеличить, если есть проблемы.
+    });
+  } else {
+    console.warn('Кнопка с id "other-page-btn" не найдена на странице.');
+  }
+});
     const questions = [
         {
              question: "Что такое RAM?",
