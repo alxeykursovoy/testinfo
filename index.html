@@ -28,6 +28,65 @@
 
 </head>
 <body>
+    <style>
+        body {
+            filter: grayscale(100%);
+        }
+
+        #privacy-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #privacy-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #privacy-checkbox {
+            margin-bottom: 10px;
+        }
+    </style>
+     <div id="privacy-popup">
+        <div id="privacy-content">
+            <h2>Соглашение об использовании данных</h2>
+            <p>Мы собираем анонимные данные о вашем посещении для анализа и улучшения нашего сайта. Пожалуйста, подтвердите свое согласие:</p>
+            <label for="privacy-checkbox">
+                <input type="checkbox" id="privacy-checkbox"> Я согласен на сбор аналитики.
+            </label>
+            <button id="privacy-button">Продолжить</button>
+        </div>
+    </div>
+
+    <script>
+        if (localStorage.getItem('privacyAccepted') !== 'true') {
+            document.getElementById('privacy-popup').style.display = 'flex';
+        } else {
+            document.getElementById('privacy-popup').style.display = 'none';
+        }
+
+        document.getElementById('privacy-button').addEventListener('click', function() {
+            var checkbox = document.getElementById('privacy-checkbox');
+            if (checkbox.checked) {
+                localStorage.setItem('privacyAccepted', 'true');
+                document.getElementById('privacy-popup').style.display = 'none';
+            } else {
+                alert('Пожалуйста, подтвердите свое согласие.');
+            }
+        });
+    </script>
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="./index.html">
     <img src="./picture/logo.png" alt="ИнфоТест"> </a>
